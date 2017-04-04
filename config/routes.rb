@@ -13,6 +13,18 @@ Rails.application.routes.draw do
   
   #gives you the 7 main controller actionns
   resources :articles
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

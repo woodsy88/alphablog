@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<!--This page wraps all html pages nd -->
+<!--Displays error message from flash in create action-->
+<% flash.each do |name, msg| %>
+<ul>
+  <li>
+    <%= msg %>
+  </li>
+</ul>
+<% end %>
+<!------------------------->
+
 <%= yield %>
 
 </body>
