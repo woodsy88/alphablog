@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
-    
+   
+   #makes the set_article method from the bottom of the page avaialble at the start of the 4 actions listed 
+before_action :set_article, only: [:edit, :update, :show, :destroy]
+
 
 #Index shows a list of all the articles created, it needs an index.html.erb
     def index
@@ -34,18 +37,20 @@ class ArticlesController < ApplicationController
 
 # Show - finds and shows a single article details using show.html.erb 
     def show
-        #finds articles based on their id and shows them in views/articles/show.html.erb
-       @article = Article.find(params[:id]) 
+      #finds articles based on their id and shows them in views/articles/show.html.erb
+      # @article = Article.find(params[:id]) 
+      
     end
 
 # edit is the action that shows the individual article you want to edit. it has edit.html.erb
     def edit
-        @article = Article.find(params[:id])
+       # @article = Article.find(params[:id])
+       
     end 
 
 #update is the action that actually updates the article with the new info from the edit action. it does not have an html.erb
     def update
-      @article = Article.find(params[:id])  
+      #@article = Article.find(params[:id])  
     
       if @article.update(article_params)
           flash[:notice] = "Article was succesfully updated"
@@ -56,7 +61,8 @@ class ArticlesController < ApplicationController
     end 
 
     def destroy
-        @article = Article.find(params[:id])
+        #@article = Article.find(params[:id])
+        
         @article.destroy
         
         flash[:notice] = "Article was succesfully deleted"
@@ -68,6 +74,10 @@ class ArticlesController < ApplicationController
 
 private
 
+    def set_article
+       @article = Article.find(params[:id]) 
+    end
+    
     def article_params
         #for the article (@article) object permit params title and description
         params.require(:article).permit(:title, :description)
