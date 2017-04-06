@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {
+    color: blue;
+    font-family: open sans, sans-serif;
+}
+
+body {
+     color: #676767;
+     font-family: open sans, sans-serif;
+}
+
+
+
