@@ -12,11 +12,14 @@
   
 </head>
 <body>
+<!--Renders bootstrap nav bar from -->
+<%=  render 'layouts/navigation' %>
 
 <!--This page wraps all html pages nd -->
 <%= render 'layouts/messages' %>
 
 <%= yield %>
 
+<%= render 'layouts/footer'  %>
 </body>
 </html>
