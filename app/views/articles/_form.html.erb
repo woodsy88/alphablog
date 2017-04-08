@@ -1,15 +1,6 @@
-<!-- ERROR CHECKER-->
-<!-- errors.any? checks for any errors-->
-<% if @article.errors.any? %>
-       <h3>The following errrors prevented the article from getting created:</h3>
-        <ul>
-            <% @article.errors.full_messages.each do |msg| %>
-                <li><%= msg%></li>
-            <%end%>
-        </ul>
 
-<%end%>
-<!-- END ERROR CHECKER-->
+<!-- obj: @article sets the obj to the article instance variable from the _errors partial in shared-->
+<%= render 'shared/errors', obj: @article  %>
 
 
 <!-- ARTICLE FORM-->

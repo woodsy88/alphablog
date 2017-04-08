@@ -3,28 +3,40 @@
 <%= link_to "Create New Article", new_article_path %></p>
 <%= link_to "Home", root_path %>
 
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-    </tr>
+
+    
+  <!-- On pages with mutiple versions of an instance such as the index page, you use article, not @article to iteratte through mutiple-->
     
     <% @articles.each do |article| %>
     
-            <tr>
-                <td> <%= article.title %> </td>
-                <td> <%= article.description %> </td>
-                
-                <td><%= link_to "Edit", edit_article_path(article)  %></td>
-                <td><%= link_to "Show", article_path(article) %></td>
-                <!--DELETE METHOD -->
-                <td><%= link_to "Delete", article_path(article), method: :delete, data:{confirm: "Are you sure?"}  %></td>
-                
-            </tr>
-   
+          
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+           <div class="well well-lg">
+           
+            <div class="article-title">
+                <!-- allows user to click on the article title text to go to the article page -->
+                <%= link_to article.title, article_path(article) %>
+            </div>
+           
+            <div class="article-body">
+                <!-- limits the characters shown in the description section to 100 characters-->
+                <%= truncate(article.description, length: 100) %>
+            </div>
+            
+               <div class="article-actions">
+            <%= link_to "Edit this Article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete Article", article_path(article), method: :delete, 
+                                            data: {confirm: "are you sure you want to delete?"}, 
+                                            class: "btn btn-xs btn-danger" %>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
    <% end %>
     
     
     
     
-</table>

@@ -25,8 +25,8 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
        # redirect_to article_path(@article)
         
         if @article.save
-            
-            flash[:notice] = "Article was succesfully created"
+            #this flash is in the partial layouts/_messages.html.erb
+            flash[:success] = "Article was succesfully created"
             redirect_to article_path(@article)
             
         else
@@ -53,7 +53,8 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
       #@article = Article.find(params[:id])  
     
       if @article.update(article_params)
-          flash[:notice] = "Article was succesfully updated"
+           #this flash is in the partial layouts/_messages.html.erb
+          flash[:success] = "Article was succesfully updated"
           redirect_to article_path(@article)
       else
           render 'edit'
@@ -64,8 +65,8 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
         #@article = Article.find(params[:id])
         
         @article.destroy
-        
-        flash[:notice] = "Article was succesfully deleted"
+         #this flash is in the partial layouts/_messages.html.erb
+        flash[:danger] = "Article was succesfully deleted"
         redirect_to articles_path
     end
 
