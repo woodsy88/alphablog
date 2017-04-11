@@ -18,8 +18,11 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
 
 #Create is what actually creates the new article from the new action. no html.erb
     def create
+     
         @article = Article.new(article_params)
-       
+        
+         #ensures article has a user
+         @article.user = User.first
        
         #redirect to articles controler, #show path with the @article
        # redirect_to article_path(@article)
