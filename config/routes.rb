@@ -5,20 +5,27 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   
+    # Pages Controller Routes
   root 'pages#home'
   
   get 'about', to: 'pages#about'
   
   get 'blog', to: 'pages#blog'
   
-  #gives you the 7 main controller actionns
-  resources :articles
+  # Articles Controller Routes
+      #gives you the 7 main controller actionns for articles
+      resources :articles
   
+  # Users Controller Routes
+  #user signup routes
+     get 'signup', to: 'users#new'
   
-  
-  
-  
-  
+       #option 1 to sumbit the form data
+           #post 'users', to: 'users#create'
+           
+        #option 2 to submit the form data for new user signup
+          #this uses resources to create the 7 main actions except for new, since we created it already on line 19
+        resources :users, except: [:new]
   
   
   
