@@ -1,0 +1,19 @@
+<h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+
+<div class="row">
+    
+    <div class="col-md-4 cold-md-offest-4 center">
+        
+        <!--Size comes from helpers/application_help-->
+        <%= gravatar_for @user, size: 150 %>
+    </div>
+</div>
+<h4 align="center"><%= @user.username %>'s articles</h4>
+
+
+<!--
+- renders partial _article from views/articles 
+- obj refers to the obj in the _article partial
+- @user.articles list out all the articles associated with that user
+-->
+<%= render 'articles/article', obj: @user.articles%>

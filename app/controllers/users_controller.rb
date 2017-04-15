@@ -3,6 +3,7 @@ class UsersController < ApplicationController
    
    #New and Create share the new.html.erb
   #this initiates a new user, then create saves it, both sharing new.html.erb
+  #/signup***
    def new
        @user = User.new 
    end 
@@ -37,6 +38,12 @@ class UsersController < ApplicationController
            render 'edit'
        end
    end
+   
+   # /users/id***
+   def show
+       @user = User.find(params[:id])
+       
+   end 
    
    
    
