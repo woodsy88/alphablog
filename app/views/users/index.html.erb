@@ -1,0 +1,29 @@
+<h1 align="center">All Alpha Bloogers</h1>
+
+<div align="center">
+<!--
+@users comes from the index action in user controller-->
+<% @users.each do |user|%>
+<ul class="listing">
+    <div class="row">
+        <div class=" well col-md-4 col-md-offset-4">
+            <!-- shows users gravatar picture, links to that users individual show page -->
+            <li><%= link_to gravatar_for(user), user_path(user) %></li>
+            <li class="article-title">
+                <!-- link displays the users username, and the path links to the users individual show page-->
+                <%= link_to user.username, user_path(user) %>
+            </li>
+            <!-- 
+            - shows the amount of articles the user has created
+            - if more then 1, pluralize puts an s on it
+            - if statement - only shows this number if users has articles
+            -->
+            <li><small><%= pluralize(user.articles.count, "article") if user.articles %></small></li>
+            
+        </div>
+    </div>
+</ul>
+
+<% end %>
+
+</div>

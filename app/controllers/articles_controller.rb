@@ -12,6 +12,7 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
 
 
 #is the html page for entering and creating a new article. new.html.erb
+#/articles/new***
     def new
         @article = Article.new
     end
@@ -39,6 +40,7 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
     end 
 
 # Show - finds and shows a single article details using show.html.erb 
+# articles/id***
     def show
       #finds articles based on their id and shows them in views/articles/show.html.erb
       # @article = Article.find(params[:id]) 
@@ -46,6 +48,7 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
     end
 
 # edit is the action that shows the individual article you want to edit. it has edit.html.erb
+# articles/id/edit***
     def edit
        # @article = Article.find(params[:id])
        
