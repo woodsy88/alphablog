@@ -1,6 +1,8 @@
 <h1 align="center">All Alpha Bloogers</h1>
 
 <div align="center">
+    
+    <%= will_paginate %>
 <!--
 @users comes from the index action in user controller-->
 <% @users.each do |user|%>
@@ -25,5 +27,7 @@
 </ul>
 
 <% end %>
+
+<%= will_paginate %>
 
 </div>

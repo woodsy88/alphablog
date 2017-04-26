@@ -27,7 +27,16 @@ Rails.application.routes.draw do
           #this uses resources to create the 7 main actions except for new, since we created it already on line 19
         resources :users, except: [:new]
   
-  
+  #User login routes
+     #creates new form for user to login
+      get 'login', to: 'sessions#new'
+    
+      #submits form for user
+       post 'login', to: 'sessions#create'
+      
+      #logs user out
+      delete 'logout', to: 'sessions#destroy'
+    
   
   
   

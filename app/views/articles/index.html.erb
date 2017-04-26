@@ -1,7 +1,16 @@
 <h1>All Listings</h1>
 
+<div align="center">
+    <%= will_paginate %>
+</div>
+
 <!-- obj: @articles refers to the obj being used in the _articles.html.erb partial-->
 <%= render 'article', obj: @articles %>
+
+<div align="center">
+    <%= will_paginate %>
+</div>
+
 
 <%= link_to "Create New Article", new_article_path, class: "btn btn-lg btn-success" %>
 <%= link_to "Home", root_path, class: "btn btn-sm btn-default" %>

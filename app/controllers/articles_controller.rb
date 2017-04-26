@@ -1,13 +1,26 @@
 class ArticlesController < ApplicationController
-   
-   #makes the set_article method from the bottom of the page avaialble at the start of the 4 actions listed 
+ # the before actions run in order  
+   #makes the set_article method from the bottom of the page(private) avaialble at the start of the 4 actions listed
+   # the order of actions between [ ] is important, order them in the order you want them to execute
 before_action :set_article, only: [:edit, :update, :show, :destroy]
 
+ 
+ # require_user restricts controller actions to certain users 
+ # require someone be logged in as a user, except for the index and show actions 
+ #except for the index and show actions you need to be logged in 
+ before_action :require_user,  except: [:index, :show]
+ 
+ #this requires that it be the same user that created the article to edit, update and destroy it
+ #require_same_use is in articles controller
+ before_action :require_same_user, only: [:edit, :update, :destroy]
 
 #Index shows a list of all the articles created, it needs an index.html.erb
+#/articles***
     def index
         #grabs all articles in database
-        @articles = Article.all
+       # @articles = Article.all
+       #by default this will only load 20 single @article per page
+       @articles = Article.paginate(page: params[:page], per_page: 5)
     end 
 
 
@@ -23,7 +36,7 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
         @article = Article.new(article_params)
         
          #ensures article has a user
-         @article.user = User.first
+         @article.user = User.last
        
         #redirect to articles controler, #show path with the @article
        # redirect_to article_path(@article)
@@ -89,6 +102,15 @@ private
         #for the article (@article) object permit params title and description
         params.require(:article).permit(:title, :description)
     end
+    
+    def require_same_user
+        # != not equal to
+        if current_user != @article.user
+            flash[:danger] = "You can only edit or delete your own articles"
+            redirect_to root_path
+        end 
+    end
+    
 
 
 end

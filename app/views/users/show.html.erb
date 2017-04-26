@@ -10,10 +10,15 @@
 </div>
 <h4 align="center"><%= @user.username %>'s articles</h4>
 
-
+<div class="center">
+    <%= will_paginate @user_articles %>
+</div>
 <!--
 - renders partial _article from views/articles 
 - obj refers to the obj in the _article partial
 - @user.articles list out all the articles associated with that user
+    <#= render 'articles/article', obj: @user.articles #>
 -->
-<%= render 'articles/article', obj: @user.articles%>
+
+<!-- this uses the user_articles instance variable from show action in user controller-->
+<%= render 'articles/article', obj: @user_articles%>
