@@ -18,8 +18,12 @@ class UsersController < ApplicationController
    def create
     @user = User.new(user_params)
             if @user.save 
+                #signs user in after they signup
+                session[:user_id] = @user.id
+                
                 flash[:success] = "Welcome to the alpha blog #{@user.username}"
-                redirect_to articles_path
+                #sends user to their  user show page - profile page after signing up
+                redirect_to user_path(@user)
             else
                 #renders the new user template again
                 render 'new'
