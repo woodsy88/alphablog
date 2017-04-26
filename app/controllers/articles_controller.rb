@@ -35,8 +35,8 @@ before_action :set_article, only: [:edit, :update, :show, :destroy]
      
         @article = Article.new(article_params)
         
-         #ensures article has a user
-         @article.user = User.last
+         #ensures article has a user - User.last
+         @article.user =  current_user
        
         #redirect to articles controler, #show path with the @article
        # redirect_to article_path(@article)
