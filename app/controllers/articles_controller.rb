@@ -105,7 +105,8 @@ private
     
     def require_same_user
         # != not equal to
-        if current_user != @article.user
+        # if current user is not the creator of that article or an admin 
+        if current_user != @article.user and !current_user.admin?
             flash[:danger] = "You can only edit or delete your own articles"
             redirect_to root_path
         end 

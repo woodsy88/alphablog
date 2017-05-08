@@ -27,8 +27,12 @@
                 </small>
                 </div>
           
-            <!-- We want to resturct edit and delete actions only to logged in users that created the article-->
-                <%  if logged_in? && current_user == article.user %>
+            <!-- We want to resturct edit and delete actions only to logged in users that created the 
+                   || means OR
+                   
+                   allows theses actions if it is the current user or the admin
+            -->
+                <%  if logged_in? && (current_user == article.user || current_user.admin?) %>
                       
                        <div class="article-actions">
                                     <%= link_to "Edit this Article", edit_article_path(article), class: "btn btn-xs btn-primary" %>

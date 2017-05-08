@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
     #associates user with articles with a 1 to many association
-    has_many :articles
+                         # dependent - when you destroy a user it destroys all its related articles
+    has_many :articles, dependent: :destroy
     #before users email is saved to the database it is set to lowercase characters
     before_save {self.email = email.downcase}
        #validates user name
