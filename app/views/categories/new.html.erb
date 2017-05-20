@@ -1,0 +1,35 @@
+<h1 align="center">Create New Category</h1>
+
+<!-- obj: @user sets the obj to the article instance variable from the _errors partial in shared-->
+<%= render 'shared/errors_name', obj: @category  %>
+
+
+<!-- ARTICLE FORM-->
+
+    
+<%= form_for( @category, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :title %>
+        </div>
+        
+        <div class="col-sm-8">
+            <%= f.text_field :name, rows: 10, class: "form-control", placeholder: "Enter Category Name", autofocus: true %>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            
+            
+             <%= f.submit class: 'btn btn-primary btn-lg' %>
+        </div>
+    </div>
+   
+<% end %>
+<!-- END ARTICLE FORM-->
+<div class="col-xs-4 col-xs-offset-4">
+    [ <%= link_to "Cancel Request and Return to listings", articles_path %> ]
+</div>
