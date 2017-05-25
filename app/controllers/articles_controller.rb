@@ -100,7 +100,8 @@ private
     
     def article_params
         #for the article (@article) object permit params title and description
-        params.require(:article).permit(:title, :description)
+                                                                #entering categories in the article form
+        params.require(:article).permit(:title, :description, category_ids: [ ])
     end
     
     def require_same_user

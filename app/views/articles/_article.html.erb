@@ -27,6 +27,13 @@
                 </small>
                 </div>
           
+            <% if article.categories.any?  %>
+                    <p>Categories: <%= render article.categories %></p>
+            <% end %>
+            
+            
+            
+            
             <!-- We want to resturct edit and delete actions only to logged in users that created the 
                    || means OR
                    
